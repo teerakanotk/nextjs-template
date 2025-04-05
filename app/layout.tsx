@@ -2,10 +2,10 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { SiteHeader } from "@/components/site-header";
-import { Sidebar } from "@/components/sidebar";
-import { SiteFooter } from "@/components/site-footer";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Navbar } from "@/components/layout/navbar";
+import { Sidebar } from "@/components/layout/sidebar";
+import { Footer } from "@/components/layout/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,16 +28,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-svh flex-col bg-background">
-            <SiteHeader />
-            <main className="flex flex-1 flex-col">
-              <div className="container">
-                <Sidebar />
-                <main>{children}</main>
-              </div>
-            </main>
-            <SiteFooter />
-          </div>
+          <Navbar />
+          {children}
         </ThemeProvider>
       </body>
     </html>
